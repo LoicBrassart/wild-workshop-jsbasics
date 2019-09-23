@@ -3,12 +3,8 @@
   --card-height: calc(var(--card-width) * 3 / 4);
   --figure-height: 120%;
   --footer-height: 30%;
-  --footer-top: var(
-    --card-height
-  ); /* I want my footer *below* my card by default */
-  --footer-top-hover: calc(
-    var(--card-height) - var(--footer-height)
-  ); /* On hover, I want it to go up by "one height" */
+  --footer-top: var(--card-height);
+  --footer-top-hover: calc(var(--card-height) - var(--footer-height));
   --transition: ease-in-out 0.15s all;
 }
 
@@ -44,7 +40,7 @@ body {
   transition: var(--transition);
 }
 .character:hover .background {
-  filter: sepia(100%) blur(1px); /* Background is now sepia-ified and blurred on hover, to highlight current character */
+  filter: sepia(100%) blur(1px);
 }
 
 .character .figure {
@@ -55,8 +51,8 @@ body {
   transition: var(--transition);
 }
 .character:hover .figure {
-  right: 3vh; /* Slight movement to the left */
-  filter: grayscale(0); /* Figure is now fully colored */
+  right: 3vh;
+  filter: grayscale(0);
 }
 
 .character footer {
