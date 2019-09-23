@@ -3,6 +3,7 @@
   --card-height: calc(var(--card-width) * 3 / 4);
   --figure-height: 120%;
   --footer-height: 30%;
+  --transition: ease-in-out 0.15s all; /* All my transitions must happen simultaneously */
 }
 
 body {
@@ -23,6 +24,17 @@ body {
   margin: 1vw;
   overflow: hidden;
   border-radius: 3pt;
+  transition: var(
+    --transition
+  ); /* The transitions should happen smoothly, no card teleportation */
+  transform: scale(
+    0.95
+  ); /* By default, my card is a bit smaller, like it's a bit further (Yaay for perspective! \o/ ) */
+}
+.character:hover {
+  transform: scale(1); /* When hovered, my card  */
+  /* Nevermind trying to learn how to use this property: Head to "https://www.cssmatic.com/box-shadow" */
+  box-shadow: 0px 0px 64px -10px rgba(0, 0, 0, 0.75);
 }
 
 .character .background {
@@ -36,14 +48,13 @@ body {
   right: 0;
 }
 
-/*Up to now, my footer was hidden because of the .character's "overflow" property */
 .character footer {
   height: var(--footer-height);
   width: 100%;
   position: absolute;
   bottom: 0;
   background-image: linear-gradient(to bottom, #0000, #000f);
-  display: flex; /* FlexTip: an easy way to center anything inside this element is to put the parent as a flex and center it automatically */
+  display: flex;
   align-items: center;
   justify-content: center;
 }
