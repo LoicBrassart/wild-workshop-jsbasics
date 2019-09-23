@@ -3,7 +3,13 @@
   --card-height: calc(var(--card-width) * 3 / 4);
   --figure-height: 120%;
   --footer-height: 30%;
-  --transition: ease-in-out 0.15s all; /* All my transitions must happen simultaneously */
+  --footer-top: var(
+    --card-height
+  ); /* I want my footer *below* my card by default */
+  --footer-top-hover: calc(
+    var(--card-height) - var(--footer-height)
+  ); /* On hover, I want it to go up by "one height" */
+  --transition: ease-in-out 0.15s all;
 }
 
 body {
@@ -24,16 +30,11 @@ body {
   margin: 1vw;
   overflow: hidden;
   border-radius: 3pt;
-  transition: var(
-    --transition
-  ); /* The transitions should happen smoothly, no card teleportation */
-  transform: scale(
-    0.95
-  ); /* By default, my card is a bit smaller, like it's a bit further (Yaay for perspective! \o/ ) */
+  transition: var(--transition);
+  transform: scale(0.95);
 }
 .character:hover {
-  transform: scale(1); /* When hovered, my card  */
-  /* Nevermind trying to learn how to use this property: Head to "https://www.cssmatic.com/box-shadow" */
+  transform: scale(1);
   box-shadow: 0px 0px 64px -10px rgba(0, 0, 0, 0.75);
 }
 
@@ -52,11 +53,15 @@ body {
   height: var(--footer-height);
   width: 100%;
   position: absolute;
-  bottom: 0;
+  top: var(--footer-top);
   background-image: linear-gradient(to bottom, #0000, #000f);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: var(--transition);
+}
+.character:hover footer {
+  top: var(--footer-top-hover);
 }
 
 .character footer h3 {
