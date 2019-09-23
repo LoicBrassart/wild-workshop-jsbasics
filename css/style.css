@@ -1,0 +1,10 @@
+body {
+  min-height: 100vh; /* Even though I have only one item, I want my page to be full-height */
+  background-color: brown; /* Don't judge me, find something nicer :p */
+}
+
+#gallery {
+  display: flex; /* I'll use a classic Flexbox layout for my gallery */
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
