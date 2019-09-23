@@ -1,10 +1,39 @@
+:root {
+  /* Let's use some CSS variables */
+  --card-width: 30vw; /* Using the navigator viewport's width. */
+  --card-height: calc(
+    var(--card-width) * 3 / 4
+  ); /* If I ever change --card-width, my height will stay 4/3 of it's new value */
+  --figure-height: 120%; /* Heights expresses in "%" fail in most cases, unless the parent is set in "position: relative" and it's height is explicit */
+}
+
 body {
-  min-height: 100vh; /* Even though I have only one item, I want my page to be full-height */
-  background-color: brown; /* Don't judge me, find something nicer :p */
+  min-height: 100vh;
+  background-color: brown;
 }
 
 #gallery {
-  display: flex; /* I'll use a classic Flexbox layout for my gallery */
+  display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+}
+
+.character {
+  width: var(--card-width);
+  height: var(--card-height);
+  position: relative; /* Mandatory if I want to position/resize a child as an 'absolute'. Try removing this line ;-) */
+  margin: 1vw;
+  overflow: hidden;
+  border-radius: 3pt;
+}
+
+.character .background {
+  width: 100%;
+  height: auto;
+}
+
+.character .figure {
+  height: var(--figure-height);
+  position: absolute; /* I wanna position it wiith it's parent's position in mind. This one is an 'absolute', the parent is a 'relative' */
+  right: 0;
 }
