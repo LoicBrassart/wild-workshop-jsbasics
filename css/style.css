@@ -1,10 +1,8 @@
 :root {
-  /* Let's use some CSS variables */
-  --card-width: 30vw; /* Using the navigator viewport's width. */
-  --card-height: calc(
-    var(--card-width) * 3 / 4
-  ); /* If I ever change --card-width, my height will stay 4/3 of it's new value */
-  --figure-height: 120%; /* Heights expresses in "%" fail in most cases, unless the parent is set in "position: relative" and it's height is explicit */
+  --card-width: 30vw;
+  --card-height: calc(var(--card-width) * 3 / 4);
+  --figure-height: 120%;
+  --footer-height: 30%;
 }
 
 body {
@@ -21,7 +19,7 @@ body {
 .character {
   width: var(--card-width);
   height: var(--card-height);
-  position: relative; /* Mandatory if I want to position/resize a child as an 'absolute'. Try removing this line ;-) */
+  position: relative;
   margin: 1vw;
   overflow: hidden;
   border-radius: 3pt;
@@ -34,6 +32,25 @@ body {
 
 .character .figure {
   height: var(--figure-height);
-  position: absolute; /* I wanna position it wiith it's parent's position in mind. This one is an 'absolute', the parent is a 'relative' */
+  position: absolute;
   right: 0;
+}
+
+/*Up to now, my footer was hidden because of the .character's "overflow" property */
+.character footer {
+  height: var(--footer-height);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-image: linear-gradient(to bottom, #0000, #000f);
+  display: flex; /* FlexTip: an easy way to center anything inside this element is to put the parent as a flex and center it automatically */
+  align-items: center;
+  justify-content: center;
+}
+
+.character footer h3 {
+  color: white;
+  font-family: "Anton", sans-serif;
+  letter-spacing: 1pt;
+  font-size: 1.3em;
 }
