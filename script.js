@@ -25,9 +25,12 @@ const appendChar = name => {
   gallery.appendChild(character);
 };
 
-// Since my function handles everything relative to the character card creation, I can create lots of them just by calling said function several times
-appendChar("A'misandra");
-appendChar("Lewto");
-appendChar("Nazuna");
-appendChar("Olber");
-appendChar("Zaldor");
+// Writing the same line several times makes me sad... Imagine if we have 100+ characters ! ;_;
+// Instead, we'll create a names array, and call the function once for every item in it
+const characters = ["A'misandra", "Lewto", "Nazuna", "Olber", "Zaldor"];
+
+// Here is another, less common form of the "for" loop.
+// The idea is to use the value of the item directly, instead of writing "characters[i]" every time
+for (const char of characters) {
+  appendChar(char);
+}
