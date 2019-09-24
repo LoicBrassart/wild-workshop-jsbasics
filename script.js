@@ -1,14 +1,17 @@
 const gallery = document.getElementById("gallery");
 
-// We wrap our code in a function, to be able to call it easily
-// The first parameter (name) must match the folder name
 const appendChar = name => {
   const background = document.createElement("img");
   background.setAttribute("src", "img/backgrounds/outdoor-1.jpg");
   background.classList.add("background");
 
+  const cleanName = name
+    .toLowerCase() // No more capital letters
+    .replace(" ", "") // No more spaces
+    .replace("'", ""); // No more simple quotes
+  // "cleanName now contains the name of our folder"
   const figure = document.createElement("img");
-  figure.setAttribute("src", `img/adventurers/${name}/1-f.png`);
+  figure.setAttribute("src", `img/adventurers/${cleanName}/1-f.png`);
   figure.classList.add("figure");
 
   const footer = document.createElement("footer");
@@ -23,6 +26,5 @@ const appendChar = name => {
   gallery.appendChild(character);
 };
 
-appendChar("amisandra");
-// Problem: The character "A'misandra" is now called "amisandra", which bothers me :(
-// We'll have to fix this very soon!
+// At last! Now I'm not forced to alter my characters' names !
+appendChar("A'misandra");
