@@ -6,10 +6,9 @@ const appendChar = name => {
   background.classList.add("background");
 
   const cleanName = name
-    .toLowerCase() // No more capital letters
-    .replace(" ", "") // No more spaces
-    .replace("'", ""); // No more simple quotes
-  // "cleanName now contains the name of our folder"
+    .toLowerCase()
+    .replace(" ", "")
+    .replace("'", "");
   const figure = document.createElement("img");
   figure.setAttribute("src", `img/adventurers/${cleanName}/1-f.png`);
   figure.classList.add("figure");
@@ -26,5 +25,9 @@ const appendChar = name => {
   gallery.appendChild(character);
 };
 
-// At last! Now I'm not forced to alter my characters' names !
+// Since my function handles everything relative to the character card creation, I can create lots of them just by calling said function several times
 appendChar("A'misandra");
+appendChar("Lewto");
+appendChar("Nazuna");
+appendChar("Olber");
+appendChar("Zaldor");
